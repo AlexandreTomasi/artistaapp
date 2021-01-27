@@ -39,6 +39,15 @@ Instalar o npm [link](https://www.hostinger.com.br/tutoriais/instalar-node-js-ub
 "npm i --save lodash"  
 "npm install --save vue-toasted"  
 "npm install --save es6-promise"  
+ 
+axios - biblioteca para requisições(requests) para back-end.  
+bootstrap-vue - bilbioteca para responsividade, componentes e diretivas.  
+font-awesome - biblioteca de icones.  
+vue-gravatar - biblioteca com avatar para usuarios sem fotos.  
+vue-router - bliblioteca para gerenciamento de rotas.  
+vue-toasted - biblioteca para mostrar alertas na pagina.  
+sass-loader - compilador CSS para transformar em JS.  
+
 #### Criação do projeto
 Projeto criado usando a opção padrão do vue CLI.  
 "vue create artistaapp"  
