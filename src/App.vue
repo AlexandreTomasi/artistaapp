@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import axios from "axios"
+import { baseApiUrl, userKey } from "@/global"
 import { mapState} from 'vuex'
 import Header from "@/components/template/Header"
 import Menu from "@/components/template/Menu"
@@ -27,7 +29,58 @@ export default {
 			validatingToken: true
 		}
 	},
+	methods: {
+		validateToken() {
+			this.validatingToken = true
+			const json = localStorage.getItem(userKey)
+			const userData = JSON.parse(json)
+      this.$store.commit('setUser', null)
+      localStorage.removeItem(userKey)
 
+			if(!userData) {
+        this.validatingToken = false
+      
+      //se ja esta na tela de autenticacao nao encaminhar
+        let url = window.location.href.split('/')
+        if(url && url.indexOf("auth") > 0 && url[url.length-1] === "auth"){
+          return
+        }else{//fora da tela de autenticacao
+          this.$router.push({ name: 'auth' })
+          return
+        }
+			}
+ 
+      try{
+        //verifica se token ainda ta valido
+        axios.defaults.headers.common['Authorization'] = userData.refreshtoken
+        axios.get(`${baseApiUrl}/autentica/refresh`).then(res => {
+            if (res != null && res.headers && res.headers["accesstoken"]) {
+              const tokens = {"accesstoken": res.headers["accesstoken"],
+                          "refreshtoken" : res.headers["refreshtoken"],
+                          "name" : userData.name}
+              this.$store.commit('setUser', tokens)
+              localStorage.setItem(userKey, JSON.stringify(tokens))
+              if(this.$mq === 'xs' || this.$mq === 'sm') {
+                this.$store.commit('toggleMenu', false)
+              }
+            } else {
+              localStorage.removeItem(userKey)
+              delete axios.defaults.headers.common['Authorization']
+              this.$router.push({ name: 'auth' })
+            }
+            this.validatingToken = false
+        });
+      } catch(error) {
+          localStorage.removeItem(userKey)
+          delete axios.defaults.headers.common['Authorization']
+          this.$router.push({ name: 'auth' })
+          this.$store.commit('setUser', null)
+      }
+		}
+	},
+	created() {
+		this.validateToken()
+	}
 }
 </script>
 
