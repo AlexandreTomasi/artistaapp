@@ -1,24 +1,52 @@
-# artistaapp
+### Dados da inscrição no processo seletivo da POLÍCIA JUDICIÁRIA CIVIL.
+- Nome Completo: Alexandre Tomasi
+- CPF: 03323458150
+- Telefone Celular: 65992893683
+- email: alexandretomasi18@gmail.com
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Sistema front-end para exibir artistas e albuns
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Arquitetura
+- node v10.19.0
+- npm versão 6.14.4
+- @vue/cli 4.5.10
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Ferramentas
+- Visual Studio Code 1.25.1
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Configuração inicial
+O sistema operacional necessita ter as seguintes bibliotecas instaladas:
+
+#### nodejs
+"apt install nodejs"
+
+#### npm
+Instalar o npm [link](https://www.hostinger.com.br/tutoriais/instalar-node-js-ubuntu/)  
+"apt install npm"  
+#### Instalação do CLI do vue:  
+"npm i -g @vue/cli"  
+#### Instalação de dependencias
+"npm install --save font-awesome"  
+"npm install --save vuex"  
+"npm install --save bootstrap-vue"  
+"npm install --save vue-gravatar"  
+"npm install --save vue-router"  
+"npm install --save axios"  
+"npm install --save liquor-tree"  
+"npm install --save vue-mq"  
+"npm install sass-loader sass webpack --save-dev"  
+"npm i --save lodash"  
+"npm install --save vue-toasted"  
+"npm install --save es6-promise"  
+#### Criação do projeto
+Projeto criado usando a opção padrão do vue CLI.  
+"vue create artistaapp"  
+
+### Executando
+Vá até a raiz do projeto dentro da pasta "artistaapp" e execute o seguinte comando:  
+"npm run serve -- --port 8081"  
+Pode-se alterar a porta em que o projeto irá executar conforme necessite. Devido back-end já estar utilizando a porta 8080 foi escolhido a porta 8081 para o front-end.
+
+### Acessando o sistema.
+Abra navegador e acesse o link [http://localhost:8081/auth](http://localhost:8081/auth)
