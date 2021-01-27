@@ -5,6 +5,7 @@ import AdminPages from '@/components/admin/AdminPages'
 import Auth from '@/components/auth/Auth'
 import AlbumBusca from '@/components/album/AlbumBusca'
 import AlbumById from '@/components/album/AlbumById'
+import AlbumInserir from '@/components/album/AlbumInserir'
 
 
 Vue.use(VueRouter)
@@ -29,6 +30,10 @@ const routes = [{
       name: 'albumById',
       path: '/albuns/:id',
       component: AlbumById
+},{
+      name: 'albumInserir',
+      path: '/albumInserir',
+      component: AlbumInserir
 }
 ]
 
