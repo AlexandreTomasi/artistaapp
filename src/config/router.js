@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import AdminPages from '@/components/admin/AdminPages'
 import Auth from '@/components/auth/Auth'
 import AlbumBusca from '@/components/album/AlbumBusca'
+import AlbumById from '@/components/album/AlbumById'
 
 
 Vue.use(VueRouter)
@@ -24,6 +25,10 @@ const routes = [{
       name: 'albumBusca',
       path: '/album',
       component: AlbumBusca
+},{
+      name: 'albumById',
+      path: '/albuns/:id',
+      component: AlbumById
 }
 ]
 
