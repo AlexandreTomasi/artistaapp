@@ -34,7 +34,7 @@ export default {
                      "name" : this.user.login}
                     this.$store.commit('setUser', tokens)
                     localStorage.setItem(userKey, JSON.stringify(tokens))
-                    this.$router.push({ path: '/' })
+                    this.$router.push({ path: '/album' })
                 })
                 .catch(showError)
         },
