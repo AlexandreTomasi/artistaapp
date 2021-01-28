@@ -58,4 +58,16 @@ Vá até a raiz do projeto dentro da pasta "artistaapp" e execute o seguinte com
 Pode-se alterar a porta em que o projeto irá executar conforme necessite. Devido back-end já estar utilizando a porta 8080 foi escolhido a porta 8081 para o front-end.
 
 ### Acessando o sistema.
-Abra navegador e acesse o link [http://localhost:8081/auth](http://localhost:8081/auth)
+Abra navegador e acesse o link [http://localhost:8081/auth](http://localhost:8081/auth).  
+
+### Descrição do Sistema
+O sistema artistaapp tem como objetivo gerenciar álbuns de artistas, o usuario poderá realizar as seguintes opções:
+- Buscar álbuns: Busca de álbuns com opção de filtro para nome do álbum de forma ordenada. Exibição de forma paginada.
+- Inserir álbum: Inserção de um novo álbum com opção de enviar imagens da capa do album. 
+- Editar álbum:  Busca álbuns igual a "*Buscar álbuns*" e ao clicar no álbum o usuario terá opção de inserir mais imagens ou excluir as que já estão inseridas, alterar nome do álbum e excluir álbun
+
+- Inserir Artista: Inserção de um novo artista.
+- Buscar e editar ou excluir artista: Busca artistas por nome com opção de ordenação de forma paginada, ao clicar em um artista abrirá uma tela com as opçõpes de editar nome do artista ou exclui-lo
+
+### Funcionalidades técnicas do sistema
+O sistema foi criado usando o layout de grid.
