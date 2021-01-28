@@ -9,6 +9,7 @@
                               v-model="album.name" required
                               :readonly="mode === 'remove'"
                               placeholder="Informe o Nome do Álbum..." />
+                              <input style="display: none" type="text">
                         </b-form-group>
                   </b-col>
                   <b-col md="6" sm="12">
@@ -46,10 +47,10 @@
                   <b-row>
                         <b-col class="botaoSave" md="12" sm="12" >
                               <b-button variant="warning" :disabled='isDisabled'
-                              @click="limpar">Limpar</b-button>
+                              @click="limpar">Limpar Campos</b-button>
                               <label></label>
                               <b-button class="ml-2" variant="primary" :disabled='isDisabled'
-                              @click="onUpload">Inserir</b-button>
+                              @click="onUpload">Inserir Álbum</b-button>
 
                         </b-col>
                   </b-row>

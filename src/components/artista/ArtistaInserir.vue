@@ -9,6 +9,7 @@
                               v-model="nome" required
                               :readonly="mode === 'remove'"
                               placeholder="Informe o Nome do artista..." />
+                              <input style="display: none" type="text">
                         </b-form-group>
                   </b-col>
             </b-row>
