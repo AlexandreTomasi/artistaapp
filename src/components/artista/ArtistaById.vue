@@ -64,6 +64,7 @@ export default {
                 ).catch(showError)
                 .finally(() =>{
                     this.desbloquiarBotao()
+                    sessionStorage.setItem('nomeArtista', '');
                    return this.$router.push({ name: 'artistaBusca' })
                 });
         },

@@ -96,6 +96,8 @@ export default {
         }
         if(sessionStorage.getItem('nomeAlbumEditar')){
             this.nomeAlbum = sessionStorage.getItem('nomeAlbumEditar');
+        }else{
+            this.nomeAlbum = ''
         }
         this.getAlbuns()
     }

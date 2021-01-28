@@ -69,9 +69,9 @@ export default {
       methods: {
         changePage(value) {
             this.offset = value;
-            this.getAlbuns();
+            this.getArtistas();
         },
-        getAlbuns() {
+        getArtistas() {
             sessionStorage.setItem('ordenacaoArtista', this.ordenacao);
             sessionStorage.setItem('nomeArtista', this.nomeArtista);
             this.buscando = true
@@ -89,7 +89,7 @@ export default {
         },
         debounceInput: debounce(function () {
                 this.offset = 0;
-                this.getAlbuns();
+                this.getArtistas();
             }, 500)
     },
     mounted() {
@@ -98,8 +98,10 @@ export default {
         }
         if(sessionStorage.getItem('nomeArtista')){
             this.nomeArtista = sessionStorage.getItem('nomeArtista');
+        }else{
+            this.nomeArtista = ''
         }
-        this.getAlbuns()
+        this.getArtistas()
     }
 }
 </script>

@@ -146,6 +146,7 @@ export default {
                     showSucess 
                 ).catch(showError)
                 .finally(() =>{
+                    sessionStorage.setItem('nomeAlbumEditar', '');
                     this.desbloquiarBotao()
                    return this.$router.push({ name: 'albumEditar' })
                 });
