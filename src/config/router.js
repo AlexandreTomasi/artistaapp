@@ -9,7 +9,9 @@ import AlbumByIdEditar from '@/components/album/AlbumByIdEditar'
 import AlbumInserir from '@/components/album/AlbumInserir'
 import AlbumEditar from '@/components/album/AlbumEditar'
 
+import ArtistaBusca from '@/components/artista/ArtistaBusca'
 import ArtistaInserir from '@/components/artista/ArtistaInserir'
+import ArtistaById from '@/components/artista/ArtistaById'
 
 
 Vue.use(VueRouter)
@@ -47,9 +49,17 @@ const routes = [{
       path: '/albunsEditar/:id',
       component: AlbumByIdEditar
 },{
-  name: 'artistaInserir',
-  path: '/artistaInserir',
-  component: ArtistaInserir
+      name: 'artistaInserir',
+      path: '/artistaInserir',
+      component: ArtistaInserir
+},{
+      name: 'artistaById',
+      path: '/artistaById',
+      component: ArtistaById
+},{
+      name: 'artistaBusca',
+      path: '/artistaBusca',
+      component: ArtistaBusca
 }
 ]
 
