@@ -8,6 +8,7 @@
                 <input type="text" placeholder="Digite para filtrar..."
                     v-model="nomeAlbum" class="filter-field"
                     @keyup="debounceInput" maxlength="50">
+                    <input style="display: none" type="text">
             </b-col>
             <b-col md="3" sm="12" class="ordena-control">
                 <select class="form-control" v-model="ordenacao" @change="debounceInput">
@@ -70,6 +71,8 @@ export default {
             this.getAlbuns();
         },
         getAlbuns() {
+            sessionStorage.setItem('ordenacaoEditar', this.ordenacao);
+            sessionStorage.setItem('nomeAlbumEditar', this.nomeAlbum);
             this.buscando = true
             let sort = this.ordenacao === "ASC" || this.ordenacao === "DESC" ? "nome,"+this.ordenacao : ''
             const url = `${baseApiUrl}/album?page=${this.offset}&size=${this.limit}`+
@@ -88,6 +91,12 @@ export default {
             }, 500)
     },
     mounted() {
+        if(sessionStorage.getItem('ordenacaoEditar')){
+            this.ordenacao = sessionStorage.getItem('ordenacaoEditar');
+        }
+        if(sessionStorage.getItem('nomeAlbumEditar')){
+            this.nomeAlbum = sessionStorage.getItem('nomeAlbumEditar');
+        }
         this.getAlbuns()
     }
 }

@@ -8,6 +8,7 @@
                 <input type="text" placeholder="Digite para filtrar..."
                     v-model="nomeArtista" class="filter-field"
                     @keyup="debounceInput" maxlength="50">
+                    <input style="display: none" type="text">
             </b-col>
             <b-col md="3" sm="12" class="ordena-control">
                 <select class="form-control" v-model="ordenacao" @change="debounceInput">

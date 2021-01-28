@@ -6,8 +6,10 @@
                 <b-col md="9" sm="12" class="home-filter">
                     <i class="fa fa-search fa-lg"></i>
                     <input type="text" placeholder="Digite para filtrar..."
-                        v-model="nomeAlbum" class="filter-field"
+                        v-model="nomeAlbum"
                         @keyup="debounceInput" maxlength="50">
+
+                        <input style="display: none" type="text">
                 </b-col>
                 <b-col md="3" sm="12" class="ordena-control">
                     <select class="form-control" v-model="ordenacao" @change="debounceInput">
