@@ -99,5 +99,9 @@ export default {
             color: #000;
       }
 
-      
+      @media only screen and (max-width: 630px) {
+            .user-button {
+                  font-size:  0.9rem;
+            }
+      }
 </style>

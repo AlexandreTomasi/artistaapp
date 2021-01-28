@@ -56,7 +56,7 @@ export default {
       }
 
       .title a:hover {
-            color: #FFF;
+            color: rgb(255, 255, 255);
             text-decoration: none;
       }
 
@@ -77,4 +77,11 @@ export default {
             background-color: rgba(0, 0, 0, 0.2);
 
       }
+
+      @media only screen and (max-width: 630px) {
+            .title {
+                  font-size:  1.1rem;
+            }
+      }
+
 </style>

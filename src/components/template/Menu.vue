@@ -34,7 +34,7 @@
                         </router-link>
                     </li>
                     <li><router-link to="/albumEditar" class="router">
-                        <i class="fa fa-times"></i>Editar Álbum
+                        <i class="fa fa-edit"></i>Editar Álbum
                         </router-link>
                     </li>
                 </ul>
@@ -55,7 +55,7 @@ export default {
 <style>
     .menu {
         grid-area: menu;
-        background: linear-gradient(to right, #232526, #414345);
+        background: linear-gradient(to right, #000, #2b2c2e);
 
         display: flex;
         flex-direction: column;
