@@ -12,7 +12,8 @@
                             <i class="fa fa-search"></i>Buscar/Editar
                         </router-link>
                     </li>                       
-                    <li><router-link to="/artistaInserir" class="router">
+                    <li>
+                        <router-link to="/artistaInserir" class="router">
                         <i class="fa fa-plus"></i>Inserir Artista
                         </router-link>
                     </li>
@@ -25,15 +26,17 @@
                 </a>
                 <ul style="list-style: none;">
                     <li>
-                        <router-link to="/album" class="router">
+                        <router-link to="/album" class="router" >
                             <i class="fa fa-search"></i>Buscar
                         </router-link>
                     </li>                       
-                    <li><router-link to="/albumInserir" class="router">
+                    <li>
+                        <router-link to="/albumInserir" class="router">
                         <i class="fa fa-plus"></i>Inserir Álbum
                         </router-link>
                     </li>
-                    <li><router-link to="/albumEditar" class="router">
+                    <li>
+                        <router-link to="/albumEditar" class="router">
                         <i class="fa fa-edit"></i>Editar Álbum
                         </router-link>
                     </li>
@@ -45,7 +48,6 @@
 
 <script>
 import { mapState } from 'vuex'
-
 export default {
     name: 'Menu',
     computed: mapState(['isMenuVisible'])
