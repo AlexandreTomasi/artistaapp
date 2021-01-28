@@ -5,7 +5,9 @@ import AdminPages from '@/components/admin/AdminPages'
 import Auth from '@/components/auth/Auth'
 import AlbumBusca from '@/components/album/AlbumBusca'
 import AlbumById from '@/components/album/AlbumById'
+import AlbumByIdEditar from '@/components/album/AlbumByIdEditar'
 import AlbumInserir from '@/components/album/AlbumInserir'
+import AlbumEditar from '@/components/album/AlbumEditar'
 
 
 Vue.use(VueRouter)
@@ -34,6 +36,14 @@ const routes = [{
       name: 'albumInserir',
       path: '/albumInserir',
       component: AlbumInserir
+},{
+      name: 'albumEditar',
+      path: '/albumEditar',
+      component: AlbumEditar
+},{
+      name: 'albumByIdEditar',
+      path: '/albunsEditar/:id',
+      component: AlbumByIdEditar
 }
 ]
 
