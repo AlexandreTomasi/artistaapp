@@ -295,7 +295,7 @@ export default {
     z-index: 1000;
     
     /* == */
-    left:280px;
+    left:200px;
     top: 0px;
     /* == */
     }
@@ -341,9 +341,10 @@ export default {
     /* == */
     }
     .mcd-menu li ul li a i {
-    font-size: 16px;
-    display: inline-block;
-    margin: 0 10px 0 0;
+        font-size: 16px;
+        display: inline-block;
+        margin: 0 10px 0 0;
+        margin-top: 6px;
     }
     .mcd-menu li ul li ul {
     left: 230px;
@@ -368,5 +369,35 @@ export default {
     left: 200px;
     }
 
+    .mcd-menu li ul li a i{
+          margin-top: 6px;  
+    }
 
+    @media only screen and (max-width: 630px) {
+        .mcd-menu li ul {
+                top: 150px;
+                margin: -150px;
+                min-width: 100px;
+        }
+        .mcd-menu li ul li{
+            width: 146px;
+            font-size:  1.1rem;
+        }
+        .mcd-menu li ul li a{
+            font-size:  1.0rem;
+        }
+
+        .mcd-menu li ul:hover {
+                top: 150px;
+                margin: -150px;
+                min-width: 100px;
+        }
+        .mcd-menu li ul li:hover{
+            width: 146px;
+            font-size:  1.1rem;
+        }
+        .mcd-menu li ul li a:hover{
+            font-size:  1.0rem;
+        }
+    }
 </style>
