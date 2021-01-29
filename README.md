@@ -70,22 +70,22 @@ O sistema artistaapp tem como objetivo gerenciar álbuns de artistas, o usuario 
 - Buscar e editar ou excluir artista: Busca artistas por nome com opção de ordenação de forma paginada, ao clicar em um artista abrirá uma tela com as opçõpes de editar nome do artista ou exclui-lo
 
 ### Aparencia visual do sistema
-O sistema foi criado usando o layout de grid, são três partes cabeçalho, conteudo e rodapé. 
+O sistema foi criado usando o layout de grid, são três partes **cabeçalho**, **conteúdo** e **rodapé**. 
 ####  Cabeçalho
 O cabeçalho na parte superior informa o nome do sistema e possui dois menus.  
 O primeiro menu do lado esquerdo o qual garante acesso as funcionalidades do sistema, possui o botão para esconder ou mostrar basta clicar na seta "> ou <".  
 Possui um sub-menu em cascata, quando a tela for menor que 630px o sub-menu irá diminuir ficando dentro do espaço do menu.  
 O segundo menu dropdown ao lado direito focado no usuario logado tem a opção de fazer logout e mostrar nome e foto do usuario logado.  
 
-#### Conteudo
-Nesta grid fica as páginas com as funcionalidades do sistema, nela o usuario poderá fazer os CRUD do artista e álbuns.  
+#### Conteúdo
+A grid de conteúdo é onde mostra as páginas com funcionalidades, nela o usuario poderá fazer CRUD de artistas ou álbuns.  
 
 #### Rodapé
-Nesta grid tem informações sobre os direitos exclusivo do autor e o ano.
+A grid de rodapé localiza-se na parte de baixo da tela, com informações sobre os direitos exclusivo do autor e o ano.
 
 ### Conceitos técnicos
 #### Autenticação
-O sistema tem uma tela login para o usuario autenticar. Os menus do cabeçalho só serão exibidos se o usuario estiver logado no sistema.
+O sistema tem uma tela login para o usuario autenticar. Os menus do cabeçalho só serão exibidos se o usuario estiver logado no sistema.  
 Ao clicar em entrar(logar) com dados corretos, o componente de autenticação irá salvar no localStorage as informações do usuario logado como
 os tokens para comunicação com back-end e informações do usuario. Dessa forma uma vez que o usuario logou não precisará logar novamente
  até o token de refresh expirar(mesmo fechando navegador) ou solicitar o deslogamento.
@@ -99,8 +99,22 @@ utilizando a api de refresh, caso possua sucesso os tokens no localStorage serã
 sem que o usuario perceba, caso o token de refresh esteja expirado sera encaminhado para tela de autenticação.  
 
 #### Tela de busca
-As telas de buscas utilizam sessionStorage do navegador para salvar a informação do filtro da consulta e a ordenação, 
-assim quando usuario sair da tela de busca e depois retornar os filtros continuarão, eles serão removidos do navegador quando 
-usuario fechar o navegador, remover os filtros ou quando excluir um album ou artista a qual havia pesquisado.
-As APIs de buscas possuem paginação, assim as telas de buscam irão mostrar apenas 3 resultados e terá a paginação em baixo, o qual usuario podera clicar na pagina que deseja ir 
-ou clicar para ir na proxima pagina.
+As telas de buscas utilizam sessionStorage do navegador para salvar a informação do filtro da consulta e a ordenação,  
+assim quando usuario sair da tela de busca e depois retornar os filtros continuarão, eles serão removidos do navegador quando  
+usuario fechar o navegador, remover os filtros ou quando excluir um album ou artista a qual havia pesquisado.  
+As APIs de buscas possuem paginação, assim as telas de busca são paginadas exibindo apenas três resultados, o usuario podera clicar na pagina em que deseja ir  
+ou clicar para proxima pagina ou para anterior.  
+Os três resultados listados na pagina poderão ser clicados para detalhadamento, editação ou excluzão dependendo da funcionalidade.  
+Ao abrir a tela de pesquisa poderá ocorrer lentidao na resposta da requisição ao back-end, assim a tela de pesquisa mostra um aguarde até a conclusão da requisiçao.
+
+#### Tela de inserção de álbuns
+Na tela de inserção de álbuns o usuario poderá informar o nome do álbum, escolher um artista que está no select, que foi preenchido com dados vindo do banco,
+ e enviar imagens da capa do álbum.  
+Ao clicar em "*Inserir Álbum*" sera enviado ao back-end todas as informações e imagens.
+
+#### Tela de inserção de álbuns
+Utiliza na primeira tela a *Tela de busca*, ao clicar em um album será encaminhado para tela de edição.  
+Na tela de edição o usuario poderá enviar mais imagens, alterar nome do album ou excluir.
+Ao clicar em *"Inserir mais imagens"* terá a opção de enviar uma ou mais imagens quando finalizar o sistema enviará essas imagens ao banco.
+As imagens são listadas com o botão de excluir que irá imediatamente exclui-las do banco se clicado.  
+
