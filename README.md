@@ -55,7 +55,7 @@ Projeto criado usando a opção padrão do vue CLI.
 ### Executando
 Vá até a raiz do projeto dentro da pasta "artistaapp" e execute o seguinte comando:  
 "npm run serve -- --port 8081"  
-Pode-se alterar a porta em que o projeto irá executar conforme necessite. Devido back-end já estar utilizando a porta 8080 foi escolhido a porta 8081 para o front-end.
+Pode-se alterar a porta em que o projeto irá executar conforme necessite. Devido back-end já estar utilizando a porta 8080 foi escolhido a porta 8081 para o front-end.  
 **Obs. O back-end criado artistaapi permite acesso apenas da url origem "http://localhost:8081".**
 
 ### Acessando o sistema.
@@ -122,7 +122,7 @@ Ao salvar ou excluir álbum, será encaminhado para tela de busca para edição.
 
 ### Dockerizando o projeto
 Seguindo os passos para dockerizar extraídos da documentação do Vue.js utilizando o *nginx*, do seguinte site [https://br.vuejs.org/v2/cookbook/dockerize-vuejs-app.html](https://br.vuejs.org/v2/cookbook/dockerize-vuejs-app.html)  
-O projeto possui um arquivo na raiz chamado DockerFile o qual possui configurações para a dockerização.
+O projeto possui um arquivo na raiz chamado DockerFile o qual possui configurações para a dockerização.  
 Devido o projeto utilizar a biblioteca "*vue-router*" é necessário criar um arquivo para configurar o *nginx* o qual está na raiz do projeto. "*nginx/nginx.conf*"
 
 Já possuindo o docker instalado no sistema operacional utilize os seguintes comandos para dockerizar:  
@@ -132,4 +132,5 @@ Compilar a imagem Docker da aplicação Vue.
 Executar a aplicação Vue em um contêiner Docker:  
 "docker run -it -p 8081:81 --rm --name artistas-app-1 artistas01-app"   
 
-**Obs. Foi utilizado a porta 8081 para executar a aplicação Vue devido ao back-end estar executando na porta 8080.**
+**Obs. Foi utilizado a porta 8081 para executar a aplicação Vue devido ao back-end estar executando na porta 8080.**  
+**O back-end criado artistaapi permite acesso apenas da url origem "http://localhost:8081".**  
