@@ -107,14 +107,15 @@ ou clicar para proxima pagina ou para anterior.
 Os três resultados listados na pagina poderão ser clicados para detalhadamento, editação ou excluzão dependendo da funcionalidade.  
 Ao abrir a tela de pesquisa poderá ocorrer lentidao na resposta da requisição ao back-end, assim a tela de pesquisa mostra um aguarde até a conclusão da requisiçao.
 
-#### Tela de inserção de álbuns
+#### Tela Inserir álbuns
 Na tela de inserção de álbuns o usuario poderá informar o nome do álbum, escolher um artista que está no select, que foi preenchido com dados vindo do banco,
  e enviar imagens da capa do álbum.  
 Ao clicar em "*Inserir Álbum*" sera enviado ao back-end todas as informações e imagens.
 
-#### Tela de inserção de álbuns
+#### Tela editar álbuns
 Utiliza na primeira tela a *Tela de busca*, ao clicar em um album será encaminhado para tela de edição.  
 Na tela de edição o usuario poderá enviar mais imagens, alterar nome do album ou excluir.
 Ao clicar em *"Inserir mais imagens"* terá a opção de enviar uma ou mais imagens quando finalizar o sistema enviará essas imagens ao banco.
 As imagens são listadas com o botão de excluir que irá imediatamente exclui-las do banco se clicado.  
+Ao salvar ou excluir álbum, será encaminhado para tela de busca para edição.
 
