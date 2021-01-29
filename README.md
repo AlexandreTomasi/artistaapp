@@ -56,6 +56,7 @@ Projeto criado usando a opção padrão do vue CLI.
 Vá até a raiz do projeto dentro da pasta "artistaapp" e execute o seguinte comando:  
 "npm run serve -- --port 8081"  
 Pode-se alterar a porta em que o projeto irá executar conforme necessite. Devido back-end já estar utilizando a porta 8080 foi escolhido a porta 8081 para o front-end.
+**Obs. O back-end criado artistaapi permite acesso apenas da url origem "http://localhost:8081".**
 
 ### Acessando o sistema.
 Abra navegador e acesse o link [http://localhost:8081/auth](http://localhost:8081/auth).  
