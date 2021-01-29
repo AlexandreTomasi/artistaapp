@@ -119,3 +119,16 @@ Ao clicar em *"Inserir mais imagens"* terá a opção de enviar uma ou mais imag
 As imagens são listadas com o botão de excluir que irá imediatamente excluí-las do banco se clicado.  
 Ao salvar ou excluir álbum, será encaminhado para tela de busca para edição.
 
+### Dockerizando o projeto
+Seguindo os passos para dockerizar extraídos da documentação do Vue.js utilizando o *nginx*, do seguinte site [https://br.vuejs.org/v2/cookbook/dockerize-vuejs-app.html](https://br.vuejs.org/v2/cookbook/dockerize-vuejs-app.html)  
+O projeto possui um arquivo na raiz chamado DockerFile o qual possui configurações para a dockerização.
+Devido o projeto utilizar a biblioteca "*vue-router*" é necessário criar um arquivo para configurar o *nginx* o qual está na raiz do projeto. "*nginx/nginx.conf*"
+
+Já possuindo o docker instalado no sistema operacional utilize os seguintes comandos para dockerizar:  
+Compilar a imagem Docker da aplicação Vue.  
+"docker build -t artistas01-app ."  
+
+Executar a aplicação Vue em um contêiner Docker:  
+"docker run -it -p 8081:81 --rm --name artistas-app-1 artistas01-app"   
+
+**Obs. Foi utilizado a porta 8081 para executar a aplicação Vue devido ao back-end estar executando na porta 8080.**
