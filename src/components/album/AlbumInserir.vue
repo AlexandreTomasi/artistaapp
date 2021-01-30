@@ -15,6 +15,7 @@
                   <b-col md="6" sm="12">
                         <b-form-group label="Artista:" label-for="user-email">
                               <select class="form-control" v-model="artista" required>
+                                    <option disabled value="">Selecione um artista</option>
                                     <option v-for="option in artistas" v-bind:value="option.id" :key="option.id">
                                           {{ option.nome }}
                                     </option>
@@ -54,7 +55,7 @@
                         </b-col>
                   </b-row>
             </b-form>
-            <LoadingFullTela v-if="isDisabled"> </LoadingFullTela>
+            <Aguarde v-if="isDisabled"> </Aguarde>
       </div>
 </template>
 
@@ -62,11 +63,11 @@
 import PageTitle from '../template/PageTitle'
 import { baseApiUrl , showError, showSucess} from '@/global'
 import axios from 'axios'
-import LoadingFullTela from '../template/LoadingFullTela'
+import Aguarde from '../template/Aguarde'
 
 export default {
       name: 'AlbumInserir',
-      components: {PageTitle,LoadingFullTela},
+      components: {PageTitle,Aguarde},
       data: function() {
         return {
             mode: 'save',

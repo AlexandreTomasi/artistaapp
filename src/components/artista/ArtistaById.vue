@@ -23,7 +23,7 @@
                               @click="excluirArtista">Excluir Artista</b-button>
                 </b-col>
             </div>
-        <LoadingFullTela v-if="isDisabled"> </LoadingFullTela>
+        <Aguarde v-if="isDisabled"> </Aguarde>
     </div>
 </template>
 
@@ -31,11 +31,11 @@
 import { baseApiUrl, showError, showSucess } from '@/global'
 import axios from 'axios'
 import PageTitle from '../template/PageTitle'
-import LoadingFullTela from '../template/LoadingFullTela'
+import Aguarde from '../template/Aguarde'
 
 export default {
     name: 'ArtistaById',
-    components: { PageTitle, LoadingFullTela },
+    components: { PageTitle, Aguarde },
     data: function() {
         return {
             artista: {},
