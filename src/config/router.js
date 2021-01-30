@@ -54,7 +54,7 @@ const routes = [{
       component: ArtistaInserir
 },{
       name: 'artistaById',
-      path: '/artistaById',
+      path: '/artistaById/:id',
       component: ArtistaById
 },{
       name: 'artistaBusca',
