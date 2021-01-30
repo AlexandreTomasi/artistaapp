@@ -48,7 +48,7 @@ import { baseApiUrl , showError} from '@/global'
 import AlbumUnidadeEditar from './AlbumUnidadeEditar'
 import axios from 'axios'
 import debounce from 'lodash/debounce';
-import vPagination from 'vue-plain-pagination'
+import vPagination from '../template/vue-plain-pagination'
 
 export default {
       name: 'AlbumEditar',

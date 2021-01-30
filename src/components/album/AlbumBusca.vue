@@ -48,7 +48,7 @@ import PageTitle from '../template/PageTitle'
 import { baseApiUrl , showError} from '@/global'
 import AlbumUnidade from './AlbumUnidade'
 import axios from 'axios'
-import vPagination from 'vue-plain-pagination'
+import vPagination from '../template/vue-plain-pagination'
 import debounce from 'lodash/debounce';
 
 export default {
