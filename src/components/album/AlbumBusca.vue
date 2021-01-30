@@ -32,13 +32,14 @@
             <span v-else class="alerta" >Nenhum registro encontrado</span>
         </ul>
 
-        <pagination
-            v-if="albuns.length"
-            :offset="offset"
-            :total="total"
-            :limit="limit"
-            @change-page="changePage"
-        />
+        <nav class="paginador">
+            <v-pagination v-model="offset"
+                        :page-count="totalPaginas"
+                        :classes="bootstrapPaginationClasses"
+                        :labels="customLabels"
+                        @change="getAlbuns">
+            </v-pagination>
+        </nav>
     </div>
 </template>
 
@@ -47,12 +48,12 @@ import PageTitle from '../template/PageTitle'
 import { baseApiUrl , showError} from '@/global'
 import AlbumUnidade from './AlbumUnidade'
 import axios from 'axios'
-import Pagination from '../template/Pagination.vue';
+import vPagination from 'vue-plain-pagination'
 import debounce from 'lodash/debounce';
 
 export default {
       name: 'AlbumHome',
-      components: {PageTitle, AlbumUnidade, Pagination},
+      components: {PageTitle, AlbumUnidade, vPagination},
       data: function() {
         return {
             category: {},
@@ -60,35 +61,44 @@ export default {
             nomeAlbum: "",
             ordenacao: '',
 
-            offset: 0,
-            total: 0,
             limit: 3,
-            buscando: false
+            buscando: false,
+            offset: 1,
+            totalPaginas: 1,
+            bootstrapPaginationClasses: { 
+                ul: 'pagination',
+                li: 'page-item',
+                liActive: 'active',
+                liDisable: 'disabled',
+                button: 'page-link'
+            },
+            customLabels: {
+                first: 'Primeira',
+                prev: 'Anterior',
+                next: 'Próxima',
+                last: 'Ultima'
+            }
         }
       },
       methods: {
-        changePage(value) {
-            this.offset = value;
-            this.getAlbuns();
-        },
         getAlbuns() {
             sessionStorage.setItem('ordenacao', this.ordenacao);
             sessionStorage.setItem('nomeAlbum', this.nomeAlbum);
             this.buscando = true
             let sort = this.ordenacao === "ASC" || this.ordenacao === "DESC" ?
              "nome,"+this.ordenacao : ''
-            const url = `${baseApiUrl}/album?page=${this.offset}&size=${this.limit}`+
+            const url = `${baseApiUrl}/album?page=${this.offset-1}&size=${this.limit}`+
             `&nomeAlbum=${this.nomeAlbum}&sort=${sort}`
             axios(url).then(res => {
                 if(res && res.data){
                     this.albuns = res.data.content
-                    this.total = res.data.totalElements
+                    this.totalPaginas = res.data.totalPages
                 }
                 this.buscando = false
             }).catch(showError)
         },
         debounceInput: debounce(function () {
-                this.offset = 0;
+                this.offset = 1;
                 this.getAlbuns();
             }, 500)
     },
@@ -105,7 +115,14 @@ export default {
 </script>
 
 <style>
-      .album-paginacao ul {
+    .paginador{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: -25px;
+    }
+
+    .album-paginacao ul {
         list-style-type: none;
         padding: 0px;
         margin-top: 20px;

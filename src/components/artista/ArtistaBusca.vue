@@ -31,13 +31,14 @@
             <span v-else class="alerta" >Nenhum registro encontrado</span>
         </ul>
 
-        <pagination
-            v-if="artistas.length"
-            :offset="offset"
-            :total="total"
-            :limit="limit"
-            @change-page="changePage"
-        />
+        <nav class="paginador">
+            <v-pagination v-model="offset"
+                        :page-count="totalPaginas"
+                        :classes="bootstrapPaginationClasses"
+                        :labels="customLabels"
+                        @change="getArtistas">
+            </v-pagination>
+        </nav>
     </div>
   
 </template>
@@ -46,13 +47,13 @@
 import PageTitle from '../template/PageTitle'
 import { baseApiUrl , showError} from '@/global'
 import axios from 'axios'
-import Pagination from '../template/Pagination.vue';
+import vPagination from 'vue-plain-pagination'
 import debounce from 'lodash/debounce';
 import ArtistaUnidade from './ArtistaUnidade'
 
 export default {
       name: "ArtistaBusca",
-      components: {PageTitle, ArtistaUnidade, Pagination},
+      components: {PageTitle, ArtistaUnidade, vPagination},
       data: function() {
         return {
             category: {},
@@ -60,35 +61,44 @@ export default {
             nomeArtista: "",
             ordenacao: '',
 
-            offset: 0,
-            total: 0,
+            offset: 1,
             limit: 3,
-            buscando: false
+            buscando: false,
+            totalPaginas: 1,
+            bootstrapPaginationClasses: { 
+                ul: 'pagination',
+                li: 'page-item',
+                liActive: 'active',
+                liDisable: 'disabled',
+                button: 'page-link'
+            },
+            customLabels: {
+                first: 'Primeira',
+                prev: 'Anterior',
+                next: 'Próxima',
+                last: 'Ultima'
+            }
         }
       },
       methods: {
-        changePage(value) {
-            this.offset = value;
-            this.getArtistas();
-        },
         getArtistas() {
             sessionStorage.setItem('ordenacaoArtista', this.ordenacao);
             sessionStorage.setItem('nomeArtista', this.nomeArtista);
             this.buscando = true
             let sort = this.ordenacao === "ASC" || this.ordenacao === "DESC" ?
              "nome,"+this.ordenacao : ''
-            const url = `${baseApiUrl}/artista?page=${this.offset}&size=${this.limit}`+
+            const url = `${baseApiUrl}/artista?page=${this.offset-1}&size=${this.limit}`+
             `&filtro=${this.nomeArtista}&sort=${sort}`
             axios(url).then(res => {
                 if(res && res.data){
                     this.artistas = res.data.content
-                    this.total = res.data.totalElements
+                    this.totalPaginas = res.data.totalPages
                 }
                 this.buscando = false
             }).catch(showError)
         },
         debounceInput: debounce(function () {
-                this.offset = 0;
+                this.offset = 1;
                 this.getArtistas();
             }, 500)
     },
@@ -107,6 +117,13 @@ export default {
 </script>
 
 <style>
+    .paginador{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: -25px;
+    }
+
     .artista-pages ul {
         list-style-type: none;
         padding: 0px;

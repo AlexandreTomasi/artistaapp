@@ -40,6 +40,7 @@ Instalar o npm [link](https://www.hostinger.com.br/tutoriais/instalar-node-js-ub
 "npm install --save vue-toasted"  
 "npm install --save es6-promise"  
 "npm install v-slim-dialog --save"  
+"npm install vue-plain-pagination"  
  
 axios - biblioteca para requisições(requests) para back-end.  
 bootstrap-vue - biblioteca para responsividade, componentes e diretivas.  
@@ -49,6 +50,7 @@ vue-router - biblioteca para gerenciamento de rotas.
 vue-toasted - biblioteca para mostrar alertas na pagina.  
 sass-loader - compilador CSS para transformar em JS.  
 v-slim-dialog - biblioteca para modal de confirmação.
+vue-plain-pagination - biblioteca para paginação.
 
 #### Criação do projeto
 Projeto criado usando a opção padrão do vue CLI.  
