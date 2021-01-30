@@ -51,15 +51,10 @@
                               <label></label>
                               <b-button class="ml-2" variant="primary" :disabled='isDisabled'
                               @click="onUpload">Inserir Álbum</b-button>
-
                         </b-col>
                   </b-row>
             </b-form>
-
-
-
-
-
+            <LoadingFullTela v-if="isDisabled"> </LoadingFullTela>
       </div>
 </template>
 
@@ -67,10 +62,11 @@
 import PageTitle from '../template/PageTitle'
 import { baseApiUrl , showError, showSucess} from '@/global'
 import axios from 'axios'
+import LoadingFullTela from '../template/LoadingFullTela'
 
 export default {
       name: 'AlbumInserir',
-      components: {PageTitle},
+      components: {PageTitle,LoadingFullTela},
       data: function() {
         return {
             mode: 'save',
