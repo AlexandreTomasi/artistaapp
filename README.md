@@ -40,7 +40,7 @@ Instalar o npm [link](https://www.hostinger.com.br/tutoriais/instalar-node-js-ub
 "npm install --save vue-toasted"  
 "npm install --save es6-promise"  
 "npm install v-slim-dialog --save"  
-"npm install vue-plain-pagination"  
+"npm install save vue-plain-pagination"   
  
 axios - biblioteca para requisições(requests) para back-end.  
 bootstrap-vue - biblioteca para responsividade, componentes e diretivas.  
@@ -111,6 +111,7 @@ As APIs de buscas possuem paginação, assim as telas de busca são paginadas ex
 ou clicar para próxima pagina ou para anterior.  
 Os três resultados listados na pagina poderão ser clicados para detalhamento, editação ou exclusão dependendo da funcionalidade.  
 Ao abrir a tela de pesquisa poderá ocorrer lentidão na resposta da requisição ao back-end, assim a tela de pesquisa mostra um aguarde até a conclusão da requisição.
+Ao digitar no campo de busca o sistema irá consultar no back-end, colocou-se um método para aguardar o fim da digitação por meio segundo para assim depois fazer a requisição. Evitando de fazer varias requisições ao back-end enquanto usuario digita.
 
 #### Tela Inserir álbuns
 Na tela de inserção de álbuns o usuário poderá informar o nome do álbum, escolher um artista que está no seletor, que foi preenchido com dados vindo do banco,
