@@ -23,7 +23,7 @@
                               @click="excluirArtista">Excluir Artista</b-button>
                 </b-col>
             </div>
-        
+        <LoadingFullTela v-if="isDisabled"> </LoadingFullTela>
     </div>
 </template>
 
@@ -31,10 +31,11 @@
 import { baseApiUrl, showError, showSucess } from '@/global'
 import axios from 'axios'
 import PageTitle from '../template/PageTitle'
+import LoadingFullTela from '../template/LoadingFullTela'
 
 export default {
     name: 'ArtistaById',
-    components: { PageTitle },
+    components: { PageTitle, LoadingFullTela },
     data: function() {
         return {
             artista: {},
@@ -58,15 +59,20 @@ export default {
                 });
         },
         excluirArtista(){
-            this.isDisabled = true
-            axios.delete(`${baseApiUrl}/artista/${this.artista.id}`).then(
-                    showSucess 
-                ).catch(showError)
-                .finally(() =>{
-                    this.desbloquiarBotao()
-                    sessionStorage.setItem('nomeArtista', '');
-                   return this.$router.push({ name: 'artistaBusca' })
-                });
+            const options = {title: 'Tem certeza que deseja excluir?', cancelLabel: 'Não', okLabel:'Sim'}
+            const corpoConfirm = 'O artista '+this.artista.nome+" será excluido permanentemente."
+            this.$dialogs.confirm(corpoConfirm, options)
+            .then(res => { if(res.ok === true){
+                this.isDisabled = true
+                axios.delete(`${baseApiUrl}/artista/${this.artista.id}`).then(
+                        showSucess 
+                    ).catch(showError)
+                    .finally(() =>{
+                        this.desbloquiarBotao()
+                        sessionStorage.setItem('nomeArtista', '');
+                    return this.$router.push({ name: 'artistaBusca' })
+                    });
+            }})
         },
         desbloquiarBotao(){
             this.isDisabled = false
