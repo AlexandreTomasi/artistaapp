@@ -31,7 +31,6 @@
                               id="attachments"
                               name="attachments"
                               ref="inputFile"
-                              class="teste"
                               accept="image/jpeg, image/png"
                                  @change="enviarImgs">
                             <label for="attachments" 
@@ -54,7 +53,7 @@
                         <br>
                         <img :src="imagem.url" alt="album" class="bloco-imagem"> 
                         <br>
-                        <b-button variant="danger" class="buton-excluir fa fa-trash"
+                        <b-button pill variant="danger" class="buton-excluir fa fa-trash"
                               :disabled="isDisabled" @click="removerImg(imagem)"></b-button>
                     </ul>
                 </b-row>
@@ -62,14 +61,14 @@
             
         </div>
         <div>
-                <b-col class="botao-save" md="12" sm="12" >
-                      <b-button class="" variant="primary" :disabled='isDisabled'
-                              @click="salvarAlbum">Salvar alterações</b-button>
-                      <b-button class="ml-2" variant="danger" :disabled='isDisabled'
-                              @click="excluirAlbum">Excluir Álbum</b-button>
-                </b-col>
-            </div>
-        
+            <b-col class="botao-save" md="12" sm="12" >
+                    <b-button class="" variant="primary" :disabled='isDisabled'
+                            @click="salvarAlbum">Salvar alterações</b-button>
+                    <b-button class="ml-2" variant="danger" :disabled='isDisabled'
+                            @click="excluirAlbum">Excluir Álbum</b-button>
+            </b-col>
+        </div>
+        <LoadingFullTela v-if="isDisabled"> </LoadingFullTela>
     </div>
 </template>
 
@@ -77,14 +76,15 @@
 import { baseApiUrl, showError, showSucess } from '@/global'
 import axios from 'axios'
 import PageTitle from '../template/PageTitle'
+import LoadingFullTela from '../template/LoadingFullTela'
 
 export default {
     name: 'AlbumByIdEditar',
-    components: { PageTitle },
+    components: { PageTitle, LoadingFullTela},
     data: function() {
         return {
             album: {},
-            isDisabled: false
+            isDisabled: false,
         }
     },
     mounted() {
@@ -121,12 +121,17 @@ export default {
                 });
         },
         removerImg(image){
+            const options = {title: 'Tem certeza que deseja excluir?', cancelLabel: 'Não', okLabel:'Sim'}
+            const corpoConfirm = 'A imagem '+image.descricao+" será excluida permanentemente."
+            this.$dialogs.confirm(corpoConfirm, options)
+            .then(res => { if(res.ok === true){
             axios.delete(`${baseApiUrl}/album/imagem/${image.id}`).then(
                     showSucess("Imagem removida com sucesso") 
                 ).catch(showError)
                 .finally(() =>{
                    this.album.imagens.splice(this.album.imagens.indexOf(image), 1);
                 });
+            }})
         },
         salvarAlbum(){
             this.isDisabled = true
@@ -135,14 +140,19 @@ export default {
                     showSucess
                 ).catch(showError)
                 .finally(() =>{
-                   this.atualizarAlbum(this.album.id);
-                   this.desbloquiarBotao()
-                   return this.$router.push({ name: 'albumEditar' })
+                this.atualizarAlbum(this.album.id);
+                this.desbloquiarBotao()
+                return this.$router.push({ name: 'albumEditar' })
                 });
+                    
         },
         excluirAlbum(){
-            this.isDisabled = true
-            axios.delete(`${baseApiUrl}/album/${this.album.id}`).then(
+            const options = {title: 'Tem certeza que deseja excluir?', cancelLabel: 'Não', okLabel:'Sim'}
+            const corpoConfirm = 'O álbum '+this.album.nome+" será excluido permanentemente."
+            this.$dialogs.confirm(corpoConfirm, options)
+            .then(res => { if(res.ok === true){
+                this.isDisabled = true
+                axios.delete(`${baseApiUrl}/album/${this.album.id}`).then(
                     showSucess 
                 ).catch(showError)
                 .finally(() =>{
@@ -150,10 +160,18 @@ export default {
                     this.desbloquiarBotao()
                    return this.$router.push({ name: 'albumEditar' })
                 });
+            }})
         },
         desbloquiarBotao(){
                   this.isDisabled = false
-            },
+        },
+        showConfirm() {
+            const options = {title: 'Confirma?', cancelLabel: 'Cancel', okLabel:'Não'}
+            this.$dialogs.confirm('Your message!', options)
+            .then(res => {
+            console.log(res) // {ok: true|false|undefined}
+            })
+        }
     }
 }
 </script>
@@ -198,9 +216,6 @@ export default {
         flex-direction: row;
     }
 
-    .teste{
-        content: 'Import Settings';
-    }
 .label-bordered {
    border: 1px solid #cecece;
    padding: 10px;
