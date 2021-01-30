@@ -8,11 +8,16 @@ import './config/axios'
 import './config/mq'
 import store from './config/store'
 import router from './config/router'
+
+import 'v-slim-dialog/dist/v-slim-dialog.css'
+import SlimDialog from 'v-slim-dialog'
 Vue.config.productionTip = false
+Vue.use(SlimDialog)
 
 
 new Vue({
   store,
   router,
+  SlimDialog,
   render: h => h(App),
 }).$mount('#app')
