@@ -50,12 +50,12 @@ export default {
                   }
                   this.isDisabled = true
 
-                  axios.post(`${baseApiUrl}/artista?nome=${this.nome}`).then(
-                        showSucess 
-                  ).catch(showError).finally(() =>{
+                  axios.post(`${baseApiUrl}/artista?nome=${this.nome}`).then(() =>{
+                        showSucess() 
+                        return this.$router.push({ name: 'artistaBusca' })
+                  }).catch(showError).finally(() =>{
                             this.desbloquiarBotao()  
                             this.limpar()      
-                            return this.$router.push({ name: 'artistaBusca' })
                   });
             },
             desbloquiarBotao(){
