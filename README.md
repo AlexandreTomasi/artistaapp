@@ -27,9 +27,10 @@ Instalar o npm [link](https://www.hostinger.com.br/tutoriais/instalar-node-js-ub
 #### Instalação do CLI do vue:  
 "npm i -g @vue/cli"  
 #### Instalação de dependencias
+No arquivo *package.json* do projeto mostra as dependencias utilizadas(*dependencies*).
 "npm install --save font-awesome"  
 "npm install --save vuex"  
-"npm install --save bootstrap-vue"  
+"npm install --save bootstrap-vue@2.0.0-rc.11"
 "npm install --save vue-gravatar"  
 "npm install --save vue-router"  
 "npm install --save axios"  
@@ -51,6 +52,11 @@ vue-toasted - biblioteca para mostrar alertas na pagina.
 sass-loader - compilador CSS para transformar em JS.  
 v-slim-dialog - biblioteca para modal de confirmação.
 vue-plain-pagination - biblioteca para paginação.
+
+**Obs. Importante usar o bootstrap versão "2.0.0-rc.11" para não ocorrer alertas no console. Caso queira saber a versão instalada use:**  
+"npm list bootstrap-vue"  
+Se desejar excluir, para instalar a versão utilizada:  
+"npm uninstall bootstrap-vue"  
 
 #### Criação do projeto
 Projeto criado usando a opção padrão do vue CLI.  
