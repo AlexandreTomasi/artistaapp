@@ -54,7 +54,7 @@ v-slim-dialog - biblioteca para modal de confirmação.
 vue-plain-pagination - biblioteca para paginação.
 
 **Obs. Importante usar o bootstrap versão "2.0.0-rc.11" para não ocorrer alertas no console.**  
-**Caso queira saber a versão instalada use:**  
+Caso queira saber a versão instalada use:   
 "npm list bootstrap-vue"  
 Se desejar excluir, para instalar a versão utilizada:  
 "npm uninstall bootstrap-vue"  
