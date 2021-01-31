@@ -7,6 +7,7 @@
                   <b-col md="6" sm="12">
                         <b-form-group label="Nome do álbum:" label-for="user-name">
                               <b-form-input id="user-name" type="text"
+                              v-if="album && album.nome"
                               v-model="album.nome" required :disabled="isDisabled"
                               placeholder="Informe o Nome do Álbum..." />
                         </b-form-group>
@@ -14,7 +15,7 @@
                   <b-col md="6" sm="12">
                         <b-form-group label="Artista:">
                               <b-form-input id="artista-name" type="text"
-                                v-if="album.artista"
+                                v-if="album && album.artista"
                                 v-model="album.artista.nome"
                                 :disabled="true" 
                               />

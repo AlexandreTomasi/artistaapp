@@ -7,8 +7,10 @@
                   <b-col md="12" sm="12">
                         <b-form-group label="Nome do artista:" label-for="user-name">
                               <b-form-input id="user-name" type="text"
-                              v-model="artista.nome" required :disabled="isDisabled"
+                              v-if="artista && artista.nome"
+                              v-model="artista.nome" required :disabled='esperar'
                               placeholder="Informe o Nome do Artista..." />
+                              <input style="display: none" type="text">
                         </b-form-group>
                   </b-col>
                 </b-row>
@@ -17,13 +19,13 @@
         </div>
         <div>
                 <b-col class="botao-save" md="12" sm="12" >
-                      <b-button class="" variant="primary" :disabled='isDisabled'
+                      <b-button class="ml-2" variant="primary" :disabled='esperar'
                               @click="salvarArtista">Salvar alterações</b-button>
-                      <b-button class="ml-2" variant="danger" :disabled='isDisabled'
+                      <b-button class="ml-2" variant="danger" :disabled='esperar'
                               @click="excluirArtista">Excluir Artista</b-button>
                 </b-col>
             </div>
-        <Aguarde v-if="isDisabled"> </Aguarde>
+        <Aguarde v-if="esperar"> </Aguarde>
     </div>
 </template>
 
@@ -39,7 +41,7 @@ export default {
     data: function() {
         return {
             artista: {},
-            isDisabled: false
+            esperar: false
         }
     },
     mounted() {
@@ -48,7 +50,7 @@ export default {
     },
     methods:{
         salvarArtista(){
-            this.isDisabled = true
+            this.esperar = true
             const salvar = {id: this.artista.id, nome: this.artista.nome}
             axios.put(`${baseApiUrl}/artista`, salvar).then(
                     showSucess
@@ -63,7 +65,7 @@ export default {
             const corpoConfirm = 'O artista '+this.artista.nome+" será excluido permanentemente."
             this.$dialogs.confirm(corpoConfirm, options)
             .then(res => { if(res.ok === true){
-                this.isDisabled = true
+                this.esperar = true
                 axios.delete(`${baseApiUrl}/artista/${this.artista.id}`).then(
                         showSucess 
                     ).catch(showError)
@@ -75,7 +77,7 @@ export default {
             }})
         },
         desbloquiarBotao(){
-            this.isDisabled = false
+            this.esperar = false
         }
     }
 }

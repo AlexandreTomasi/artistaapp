@@ -7,7 +7,6 @@
                         <b-form-group label="Nome do artista:" label-for="user-name">
                               <b-form-input id="user-name" type="text"
                               v-model="nome" required
-                              :readonly="mode === 'remove'"
                               placeholder="Informe o Nome do artista..." />
                               <input style="display: none" type="text">
                         </b-form-group>
@@ -37,7 +36,6 @@ export default {
       components: {PageTitle},
       data: function() {
         return {
-            mode: 'save',
             nome: '',
             isDisabled : false
         }
