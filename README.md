@@ -27,10 +27,10 @@ Instalar o npm [link](https://www.hostinger.com.br/tutoriais/instalar-node-js-ub
 #### Instalação do CLI do vue:  
 "npm i -g @vue/cli"  
 #### Instalação de dependencias
-No arquivo *package.json* do projeto mostra as dependencias utilizadas(*dependencies*).
+No arquivo *package.json* do projeto mostra as dependencias utilizadas(*dependencies*).  
 "npm install --save font-awesome"  
 "npm install --save vuex"  
-"npm install --save bootstrap-vue@2.0.0-rc.11"
+"npm install --save bootstrap-vue@2.0.0-rc.11"  
 "npm install --save vue-gravatar"  
 "npm install --save vue-router"  
 "npm install --save axios"  
@@ -50,10 +50,11 @@ vue-gravatar - biblioteca com avatar para usuários sem fotos.
 vue-router - biblioteca para gerenciamento de rotas.  
 vue-toasted - biblioteca para mostrar alertas na pagina.  
 sass-loader - compilador CSS para transformar em JS.  
-v-slim-dialog - biblioteca para modal de confirmação.
+v-slim-dialog - biblioteca para modal de confirmação.  
 vue-plain-pagination - biblioteca para paginação.
 
-**Obs. Importante usar o bootstrap versão "2.0.0-rc.11" para não ocorrer alertas no console. Caso queira saber a versão instalada use:**  
+**Obs. Importante usar o bootstrap versão "2.0.0-rc.11" para não ocorrer alertas no console.**  
+**Caso queira saber a versão instalada use:**  
 "npm list bootstrap-vue"  
 Se desejar excluir, para instalar a versão utilizada:  
 "npm uninstall bootstrap-vue"  
@@ -98,8 +99,8 @@ A grid de rodapé localiza-se na parte de baixo da tela, com informações sobre
 #### Autenticação
 O sistema tem uma tela login para o usuário autenticar. Os menus do cabeçalho só serão exibidos se o usuário estiver logado no sistema.  
 Ao clicar em entrar(logar) com dados corretos, o componente de autenticação irá salvar no *localStorage* as informações do usuário logado como
-os tokens para comunicação com back-end e informações do usuário. Dessa forma uma vez que o usuário logou não precisará logar novamente
- até o token de *refresh* expirar(mesmo fechando navegador) ou solicitar o *logout*.
+os tokens para comunicação com back-end e informações do usuário. Dessa forma uma vez que o usuário logou não precisará logar novamente,
+ até o momento que o token de *refresh* expirar(mesmo fechando navegador) ou solicitar o *logout*.
 Toda vez que o sistema for aberto no navegador será validado esses tokens para mostrar os menu, caso o token esteja expirado sera encaminhado para tela de autenticação.
 #### Refresh token
 Todas as requisições ao back-end necessitam de autenticação utilizando JWT(JSON Web Tokens).  
@@ -111,13 +112,13 @@ sem que o usuário perceba, caso o token de *refresh* esteja expirado sera encam
 
 #### Tela de busca
 As telas de buscas utilizam *sessionStorage* do navegador para salvar a informação do filtro da consulta e a ordenação,  
-assim quando usuário sair da tela de busca e depois retornar os filtros continuarão, eles serão removidos do navegador quando  
+assim quando usuário sair da tela de busca e depois retornar os filtros continuarão, eles serão removidos do navegador quando:  
 usuário fechar o navegador, remover os filtros ou quando excluir um álbum ou artista a qual havia pesquisado.  
 As APIs de buscas possuem paginação, assim as telas de busca são paginadas exibindo apenas três resultados, o usuário poderá clicar na pagina em que deseja ir  
 ou clicar para próxima pagina ou para anterior.  
 Os três resultados listados na pagina poderão ser clicados para detalhamento, editação ou exclusão dependendo da funcionalidade.  
 Ao abrir a tela de pesquisa poderá ocorrer lentidão na resposta da requisição ao back-end, assim a tela de pesquisa mostra um aguarde até a conclusão da requisição.
-Ao digitar no campo de busca o sistema irá consultar no back-end, colocou-se um método para aguardar o fim da digitação por meio segundo para assim depois fazer a requisição. Evitando de fazer varias requisições ao back-end enquanto usuario digita.
+Ao digitar no campo de busca o sistema irá consultar no back-end, colocou-se um método para aguardar o fim da digitação por meio segundo, para assim depois fazer a requisição. Evitando de fazer varias requisições ao back-end enquanto usuario digita.
 
 #### Tela Inserir álbuns
 Na tela de inserção de álbuns o usuário poderá informar o nome do álbum, escolher um artista que está no seletor, que foi preenchido com dados vindo do banco,
