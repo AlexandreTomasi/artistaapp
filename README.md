@@ -96,6 +96,7 @@ A grid de conteúdo é onde mostra as páginas com funcionalidades, nela o usuá
 A grid de rodapé localiza-se na parte de baixo da tela, com informações sobre os direitos exclusivo do autor e o ano.
 
 ### Conceitos técnicos
+Para questões mais especificas consulte o histórico de commits.  
 #### Autenticação
 O sistema tem uma tela login para o usuário autenticar. Os menus do cabeçalho só serão exibidos se o usuário estiver logado no sistema.  
 Ao clicar em entrar(logar) com dados corretos, o componente de autenticação irá salvar no *localStorage* as informações do usuário logado como
