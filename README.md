@@ -1,5 +1,5 @@
 # Sistema front-end para exibir artistas e álbuns
-
+Esse sistema front-end consome APIs desse sistema: [https://github.com/AlexandreTomasi/artistasapi](https://github.com/AlexandreTomasi/artistasapi)
 ### Arquitetura
 - node v10.19.0
 - npm versão 6.14.4
