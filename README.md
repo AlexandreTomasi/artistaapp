@@ -1,10 +1,3 @@
-### Dados da inscrição no processo seletivo da POLÍCIA JUDICIÁRIA CIVIL.
-- Nome Completo: Alexandre Tomasi
-- CPF: 03323458150
-- Telefone Celular: 65992893683
-- e-mail: alexandretomasi18@gmail.com
-
-
 # Sistema front-end para exibir artistas e álbuns
 
 ### Arquitetura
